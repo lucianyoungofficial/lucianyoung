@@ -4,8 +4,6 @@ title = "Lucian Young"
 theme = "PaperMod"
 
 [params]
-  homeInfoParams = true
-
-[params.homeInfoParams]
-  Title = "Hi, I'm Lucian"
-  Content = "这里是我的个人博客"
+  profileMode.enabled = true
+  profileMode.title = "Hi, I'm Lucian"
+  profileMode.subtitle = "这里是我的个人博客"
