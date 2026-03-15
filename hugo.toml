@@ -2,3 +2,10 @@ baseURL = "https://lucianyoung.cc"
 languageCode = "zh-cn"
 title = "Lucian Young"
 theme = "PaperMod"
+
+[params]
+  homeInfoParams = true
+
+[params.homeInfoParams]
+  Title = "Hi, I'm Lucian"
+  Content = "这里是我的个人博客"
