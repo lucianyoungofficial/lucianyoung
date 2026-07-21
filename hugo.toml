@@ -7,3 +7,25 @@ theme = "PaperMod"
   profileMode.enabled = true
   profileMode.title = "Hi, I'm Lucian"
   profileMode.subtitle = "这里是我的个人博客"
+
+  [menu]
+
+[[menu.main]]
+name = "Blog"
+url = "/blog/"
+weight = 10
+
+[[menu.main]]
+name = "Projects"
+url = "/projects/"
+weight = 20
+
+[[menu.main]]
+name = "Labs"
+url = "/labs/"
+weight = 30
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 40
