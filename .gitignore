@@ -1,3 +1,12 @@
+# Hugo generated files
 /public/
 /resources/
 .hugo_build.lock
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
