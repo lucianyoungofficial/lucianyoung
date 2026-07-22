@@ -29,6 +29,3 @@ weight = 30
 name = "About"
 url = "/about/"
 weight = 40
-[module]
-  [module.hugoVersion]
-    min = "0.164.0"

@@ -1,40 +1,59 @@
-# Lucian Young
+# Project 2：个人博客
 
-Source code for my personal website.
+## 项目简介
 
-Built with Hugo and the PaperMod theme.
+使用 Hugo + PaperMod + GitHub + Vercel + Cloudflare 搭建个人网站。
 
-## About
+目标：
 
-This repository contains the complete source code of my personal website.
+- 记录学习过程
+- 展示工程项目
+- 积累技术文档
 
-The website is used to document:
+---
 
-- Projects
-- Labs
-- Technical notes
-- Engineering experiments
-
-## Tech Stack
+## 技术栈
 
 - Hugo
 - PaperMod
 - Git
 - GitHub
 - Vercel
+- Cloudflare
 
-## Development
+---
 
-```bash
-hugo server
-```
+## 当前进度
 
-## Build
+- [x] Hugo 初始化
+- [x] GitHub 仓库
+- [x] 自动部署
+- [x] 自定义域名
+- [x] HTTPS
+- [x] Hugo 版本问题修复
+- [ ] 首页重构
+- [ ] Blog
+- [ ] Projects
+- [ ] Labs
+- [ ] About
 
-```bash
-hugo
-```
+---
 
-## Deployment
+## 文档
 
-The website is automatically deployed through Vercel whenever changes are pushed to the default branch.
+- docs/01-环境搭建.md
+- docs/02-Git与GitHub.md
+- docs/03-Vercel部署.md
+- docs/04-Cloudflare域名.md
+- docs/05-Hugo版本排障.md
+- docs/06-首页设计.md
+
+---
+
+## 工程日志
+
+| 日期 | 内容 |
+|------|------|
+| 2026-07-21 | Hugo 初始化 |
+| 2026-07-22 | GitHub + Vercel 自动部署 |
+| 2026-07-23 | 修复 Hugo 版本导致的 XML 首页问题 |
