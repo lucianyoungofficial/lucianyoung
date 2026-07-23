@@ -1,0 +1,355 @@
+# 06 - 网站设计规范
+
+**日期：2026-07-23**
+
+---
+
+# 文档说明
+
+本文档记录个人网站的长期设计原则。
+
+所有页面设计、功能规划和后续迭代，应尽量遵循本规范。
+
+本规范将随着网站的发展持续更新。
+
+---
+
+# 网站定位（Website Philosophy）
+
+网站不是个人简历，也不是传统作品集。
+
+网站用于持续记录：
+
+- 工程实践
+- 项目成果
+- 技术学习
+- 知识积累
+
+核心理念：
+
+> **Building software, exploring systems, documenting the process.**
+
+---
+
+# 设计原则（Design Principles）
+
+## Minimalism
+
+保持极简。
+
+避免：
+
+- 花哨动画
+- 大面积图片
+- 冗长介绍
+- 无意义装饰
+
+所有设计应服务于内容。
+
+---
+
+## Engineering First
+
+网站体现工程思维。
+
+重点展示：
+
+- Projects
+- Documentation
+- Problem Solving
+- Learning Process
+
+而不是个人包装。
+
+---
+
+## Documentation Driven
+
+所有重要功能、设计决策和排障过程，都应形成工程文档。
+
+项目不仅需要完成，也需要留下完整记录。
+
+README、docs 与 Git Commit 分工明确，共同构成项目的工程记录体系。
+
+---
+
+## Consistency
+
+保持统一。
+
+包括：
+
+- 页面布局
+- 字体
+- 编号
+- 文档模板
+- 页面模板
+- 命名规范
+
+整个网站应保持一致的视觉与组织风格。
+
+---
+
+# 网站结构（Site Structure）
+
+一级导航保持固定：
+
+```
+
+Home
+
+├── Blog
+├── Projects
+├── Labs
+└── About
+
+```
+
+导航栏仅显示：
+
+```
+
+Blog
+
+Projects
+
+Labs
+
+About
+
+```
+
+点击网站标题返回首页。
+
+不设置 Home 导航按钮。
+
+---
+
+# 首页（Homepage）
+
+首页保持极简。
+
+展示：
+
+```
+
+Lucian Young
+
+Vehicle Engineering Student
+
+Building software, exploring systems, documenting the process.
+
+↓
+
+Blog
+
+Projects
+
+Labs
+
+About
+
+```
+
+---
+
+## Current Stage
+
+首页第二行用于展示当前阶段（Current Stage）。
+
+例如：
+
+```
+
+Vehicle Engineering Student
+
+```
+
+未来可随着职业发展自然更新：
+
+```
+
+Software Engineer
+
+Embedded Software Engineer
+
+```
+
+这一行不是个人简介。
+
+它用于告诉访问者：
+
+> 我目前正处于哪个工程阶段。
+
+网站整体设计无需因此调整。
+
+---
+
+# Projects
+
+Projects 是整个网站的核心。
+
+每个项目保持统一结构。
+
+例如：
+
+```
+
+Project 01
+
+Personal VPN
+
+Completed
+
+```
+
+```
+
+Project 02
+
+Personal Website
+
+In Progress
+
+```
+
+```
+
+Project 03
+
+STM32
+
+Planned
+
+```
+
+---
+
+## Project Lifecycle
+
+每个项目都应体现生命周期。
+
+统一使用：
+
+- Planned
+- In Progress
+- Completed
+
+项目状态属于工程信息的一部分。
+
+Projects 不仅展示成果，也展示项目的发展过程。
+
+---
+
+# Blog
+
+Blog 用于记录学习与思考。
+
+文章保持时间顺序。
+
+暂不增加复杂分类。
+
+---
+
+# Labs
+
+Labs 用于记录实验、小项目与探索性内容。
+
+特点：
+
+- 快速发布
+- 不要求完整
+- 保留实验过程
+
+---
+
+# About
+
+About 保持简洁。
+
+回答：
+
+- 我是谁
+- 为什么建立网站
+- 当前关注方向
+- 联系方式（未来）
+
+避免冗长自我介绍。
+
+---
+
+# Unified Numbering
+
+整个网站采用统一编号。
+
+Projects：
+
+```
+
+Project 01
+
+Project 02
+
+Project 03
+
+```
+
+Blog：
+
+```
+
+Post 001
+
+Post 002
+
+```
+
+Labs：
+
+```
+
+Lab 001
+
+Lab 002
+
+```
+
+编号不仅用于排序，也形成统一的视觉语言。
+
+随着内容增加，无需调整整体结构。
+
+---
+
+# 网站与 GitHub 的关系
+
+网站负责：
+
+> 展示最终成果。
+
+GitHub 负责：
+
+> 保存完整工程过程。
+
+README：
+
+> 当前项目状态。
+
+docs：
+
+> 工程文档。
+
+Git Commit：
+
+> 修改记录。
+
+三者共同构成完整的工程体系。
+
+---
+
+# 持续演进
+
+本规范不是一次性完成的文档。
+
+随着网站的发展，可持续补充新的设计原则。
+
+新增原则应优先更新本文档，再落实到具体页面。
