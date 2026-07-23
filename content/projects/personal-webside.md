@@ -15,3 +15,10 @@ This website serves as a long-term engineering portfolio for documenting project
 - PaperMod
 - GitHub
 - Vercel
+---
+title: "Personal Website"
+date: 2026-07-22
+weight: 2
+summary: "An engineering portfolio built with Hugo, PaperMod and Vercel."
+draft: false
+---
