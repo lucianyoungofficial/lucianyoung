@@ -28,7 +28,8 @@
 核心理念：
 
 > **Building software, exploring systems, documenting the process.**
-
+好装。作废。
+A place to build, document and share.
 ---
 
 # 设计原则（Design Principles）
@@ -46,7 +47,29 @@
 
 所有设计应服务于内容。
 
----
+## Low Maintenance（低维护）
+
+网站应保持极低的维护成本。
+
+网站的目标是持续记录，而不是持续维护。
+
+所有设计应优先考虑：
+
+- 更新简单
+- 新增内容简单
+- 长期易维护
+- 不依赖复杂配置
+- 不需要频繁修改布局
+
+避免为了视觉效果增加额外维护负担。
+
+宁可保持简单，也不要为了丰富功能增加复杂度。
+
+设计原则：
+
+> Less Maintenance, More Content.
+>
+> 把时间花在创造内容，而不是维护网站。---
 
 ## Engineering First
 
@@ -137,7 +160,7 @@ Lucian Young
 
 Vehicle Engineering Student
 
-Building software, exploring systems, documenting the process.
+A place to build, document and share.
 
 ↓
 
@@ -353,3 +376,836 @@ Git Commit：
 随着网站的发展，可持续补充新的设计原则。
 
 新增原则应优先更新本文档，再落实到具体页面。
+---
+
+# 首页设计（Homepage Design）
+
+首页遵循极简设计，仅承担网站入口的职责。
+
+展示顺序固定如下：
+
+```text
+Lucian Young    [GitHub]
+
+Vehicle Engineering Student
+
+Building software, exploring systems, documenting the process.
+
+↓
+
+Blog
+
+Projects
+
+Labs
+
+About
+```
+
+首页不承担内容展示功能，而是帮助访问者快速了解网站定位并进入对应页面。
+
+---
+
+## Current Stage
+
+首页第二行用于展示当前阶段（Current Stage）。
+
+例如：
+
+```text
+Vehicle Engineering Student
+```
+
+未来可根据职业发展更新为：
+
+```text
+Software Engineer
+
+Embedded Software Engineer
+```
+
+### 设计原则
+
+- Current Stage 用于说明当前所处阶段，而非个人简介。
+- 随着职业发展可自然更新。
+- 网站整体布局无需因此调整。
+- 保持网站具有长期成长性。
+
+---
+
+## Homepage Navigation
+
+首页导航采用纵向布局。
+
+```text
+Blog
+
+Projects
+
+Labs
+
+About
+```
+
+### 设计原则
+
+访问者阅读顺序保持一致：
+
+1. 网站身份（Identity）
+2. 当前阶段（Current Stage）
+3. 网站理念（Slogan）
+4. 网站导航（Navigation）
+
+首页避免复杂布局，使用户快速进入内容。
+
+---
+
+## Identity Links
+
+GitHub 属于身份入口（Identity Link），而不是网站导航。
+
+放置于网站名称右侧。
+
+例如：
+
+```text
+Lucian Young    [GitHub]
+```
+
+### 设计原则
+
+- GitHub 属于作者身份的一部分。
+- 不放入 Blog、Projects 等导航中。
+- 保持导航仅包含站内页面。
+- 后续若增加 Email、LinkedIn 等身份入口，也应保持相同位置与样式。
+- 身份入口保持简洁，不喧宾夺主。
+
+---
+
+# Decision 05：Projects 与 Blog 的职责划分
+
+**Status：Accepted**
+
+## Background
+
+随着网站内容逐渐增加，需要明确 Projects 与 Blog 的定位。
+
+若两者同时记录项目开发过程，容易造成内容重复，增加维护成本，也会降低网站整体结构的清晰度。
+
+因此，两者承担不同职责。
+
+---
+
+## Decision
+
+网站采用双内容体系：
+
+- Projects：工程项目（Engineering Projects）
+- Blog：观点与思考（Thoughts & Essays）
+
+两者互相独立，不重复记录相同内容。
+
+---
+
+# Projects
+
+Projects 用于展示完整的工程项目。
+
+重点展示：
+
+- 工程实践
+- 技术实现
+- 系统架构
+- 项目成果
+- 工程文档
+- GitHub
+
+每个 Project 应具有完整性，能够独立展示一个工程项目。
+
+推荐结构：
+
+```text
+Overview
+
+Tech Stack
+
+Architecture
+
+Documentation
+
+Lessons Learned
+
+GitHub
+```
+
+Projects 更偏向工程文档，而非技术博客。
+
+目标是让访问者快速了解：
+
+- 做了什么
+- 如何实现
+- 最终成果
+
+---
+
+# Blog
+
+Blog 用于记录个人观点、思考与随笔。
+
+内容可以包括：
+
+- 技术思考
+- 工程观点
+- 学习感悟
+- 行业观察
+- 阅读笔记
+- 日常随笔
+- 职业成长
+
+Blog 不承担项目文档功能。
+
+Blog 不要求固定更新频率。
+
+只有当存在值得表达的内容时，才发布新的文章。
+
+---
+
+## Relationship
+
+Projects 与 Blog 相互补充，但职责不同。
+
+Projects 回答：
+
+> What I Built.
+
+Blog 回答：
+
+> What I Think.
+
+Projects 展示工程成果。
+
+Blog 展示个人思考。
+
+两者共同构成网站内容，但保持清晰边界。
+
+---
+
+## Low Maintenance
+
+采用职责分离的方式，可以降低长期维护成本。
+
+完成一个工程项目时，仅维护对应 Project 页面。
+
+只有当产生新的观点或思考时，再发布 Blog。
+
+避免同一内容重复维护。
+
+保持网站长期简洁、清晰且易于持续更新。
+
+---
+
+# Decision 06：About 页面设计
+
+**Status：Accepted**
+
+## Background
+
+About 页面用于介绍网站作者。
+
+传统个人网站通常采用长篇自我介绍或成长经历的形式，但这类内容维护成本较高，也容易随着时间推移而过时。
+
+因此，About 页面保持简洁，仅展示长期稳定的信息。
+
+---
+
+## Decision
+
+About 页面采用固定模块化设计。
+
+推荐结构如下：
+
+```text
+About
+
+Who Am I
+
+Current Focus
+
+Principles
+
+Contact
+```
+
+页面整体控制在一分钟内阅读完成。
+
+---
+
+## Who Am I
+
+简要介绍当前身份。
+
+例如：
+
+```text
+Vehicle Engineering student interested in embedded systems, networking and software engineering.
+```
+
+不详细介绍成长经历。
+
+不编写个人传记。
+
+随着职业发展，仅更新身份描述即可。
+
+---
+
+## Current Focus
+
+用于展示当前关注方向。
+
+例如：
+
+- Vehicle Engineering
+- Embedded Systems
+- Networking
+- Linux
+
+Current Focus 可以随着学习方向变化而更新。
+
+它反映的是当前阶段，而不是长期标签。
+
+---
+
+## Principles
+
+展示长期坚持的工程理念。
+
+例如：
+
+- Documentation First
+- Engineering Thinking
+- Continuous Learning
+- Build Before Polish
+- Low Maintenance
+
+Principles 应保持长期稳定。
+
+未来如有新的设计理念，可逐步补充。
+
+---
+
+## Contact
+
+联系方式保持简洁。
+
+推荐仅保留：
+
+- GitHub
+- Email（后续添加）
+
+避免加入过多社交平台。
+
+联系方式应服务于交流，而非展示。
+
+---
+
+## Rationale
+
+About 页面的目标不是介绍全部经历。
+
+而是帮助访问者快速了解：
+
+- 我是谁
+- 我目前关注什么
+- 我坚持什么
+- 如何联系我
+
+页面保持简洁、稳定、易维护。
+
+符合网站整体的极简设计理念。
+
+---
+
+# Decision 07：Labs 页面设计
+
+**Status：Accepted**
+
+## Background
+
+Labs 用于展示有趣的小作品与互动内容。
+
+Labs 不承担工程项目展示功能，也不记录开发过程。
+
+它的目标是提升网站趣味性，为访问者提供轻量、可交互的内容。
+
+---
+
+## Decision
+
+Labs 收录：
+
+- 小工具
+- 小游戏
+- 可视化
+- 动画
+- Demo
+- 互动页面
+
+每一个 Lab 都应能够独立访问和体验。
+
+---
+
+## Definition
+
+Lab 应满足以下特点：
+
+- 内容轻量。
+- 可独立体验。
+- 具有趣味性或互动性。
+- 无需复杂背景知识即可使用。
+
+Lab 不要求形成完整工程。
+
+重点在于展示创意与交互体验。
+
+---
+
+## Exclusions
+
+以下内容不属于 Labs：
+
+- 完整工程项目（Projects）
+- 工程文档
+- 技术博客
+- 学习笔记
+- 个人随笔
+
+---
+
+## Relationship
+
+Projects：
+
+展示完整工程。
+
+Blog：
+
+记录观点与思考。
+
+Labs：
+
+展示有趣的互动作品与创意实验。
+
+三者职责独立，不发生重复。
+
+---
+
+## Rationale
+
+Labs 的目标不是体现工程规模。
+
+而是提高网站的趣味性与可探索性。
+
+访问者可以快速体验各种小作品，增强网站的吸引力，同时保持较低的维护成本。
+
+---
+
+# Decision 08：统一页面模板
+
+**Status：Accepted**
+
+## Background
+
+随着网站内容增加，需要统一页面结构。
+
+统一模板可以减少设计成本，提高一致性，并降低长期维护难度。
+
+---
+
+## Decision
+
+网站所有一级内容均采用固定模板。
+
+新增内容时，应优先复用已有模板，而不是重新设计页面。
+
+---
+
+## Templates
+
+### Projects
+
+统一采用：
+
+- Project Number
+- Project Name
+- Category
+- Status
+- Overview
+- Tech Stack
+- Architecture
+- Documentation
+- Lessons Learned
+- GitHub
+
+---
+
+### Blog
+
+统一采用：
+
+- Post Number
+- Title
+- Date
+- Content
+
+保持简洁，不增加复杂分类。
+
+---
+
+### Labs
+
+统一采用：
+
+- Lab Number
+- Name
+- Category
+- Description
+- Launch
+
+Lab 页面应以体验内容为主，而非文字介绍。
+
+---
+
+### About
+
+统一采用：
+
+- Who Am I
+- Current Focus
+- Principles
+- Contact
+
+---
+
+## Rationale
+
+统一模板能够：
+
+- 提高一致性。
+- 降低维护成本。
+- 减少设计决策。
+- 保持网站长期稳定发展。
+
+---
+
+# Decision 09：命名规范（Naming Convention）
+
+**Status：Accepted**
+
+## Background
+
+统一命名规范能够提高项目可维护性，避免随着内容增加导致目录混乱。
+
+所有页面、文件、图片与资源均遵循统一命名规则。
+
+---
+
+## General Rules
+
+统一采用：
+
+- 英文
+- 小写
+- kebab-case（短横线）
+- 不使用空格
+- 不使用特殊字符
+
+例如：
+
+```text
+personal-vpn
+
+personal-website
+
+snake-game
+```
+
+---
+
+## Projects
+
+Project 标题可以正常显示。
+
+文件名采用英文 kebab-case。
+
+例如：
+
+```text
+Title
+
+Personal VPN
+
+↓
+
+File
+
+personal-vpn.md
+```
+
+---
+
+## Blog
+
+Blog 标题保持自由。
+
+文件名采用简洁英文。
+
+例如：
+
+```text
+Title
+
+为什么我开始写工程文档
+
+↓
+
+File
+
+engineering-documentation.md
+```
+
+---
+
+## Labs
+
+Labs 保持一致。
+
+例如：
+
+```text
+snake-game.md
+
+markdown-preview.md
+
+network-visualizer.md
+```
+
+---
+
+## Images
+
+图片采用具有描述性的英文名称。
+
+例如：
+
+```text
+vpn-architecture.png
+
+homepage-wireframe.png
+
+stm32-board.jpg
+```
+
+避免使用默认文件名。
+
+---
+
+## Rationale
+
+统一命名可以：
+
+- 提高可维护性
+- 提高可读性
+- 降低长期管理成本
+- 保持仓库整洁
+
+---
+
+# Decision 10：语言规范（Language Convention）
+
+**Status：Accepted**
+
+## Background
+
+网站既面向中文读者，也希望保持工程项目的国际化表达。
+
+因此，网站采用结构统一、内容灵活的语言规范。
+
+---
+
+## Decision
+
+网站遵循：
+
+> Structure in English, Content in the Most Natural Language.
+
+即：
+
+网站结构使用英文。
+
+正文内容使用最适合表达的语言。
+
+---
+
+## Navigation
+
+一级导航统一使用英文：
+
+- Blog
+- Projects
+- Labs
+- About
+
+---
+
+## URL
+
+所有 URL 保持英文。
+
+采用 kebab-case。
+
+例如：
+
+```text
+/projects/personal-vpn/
+
+/blog/engineering-documentation/
+
+/labs/snake-game/
+```
+
+---
+
+## Projects
+
+Project 名称优先使用英文。
+
+Project 更接近产品或工程名称，应保持统一。
+
+---
+
+## Blog
+
+Blog 标题与正文可自由使用中文或英文。
+
+不限制语言。
+
+表达准确优先于形式统一。
+
+---
+
+## Technical Terms
+
+技术术语优先保留英文。
+
+例如：
+
+- GitHub
+- README
+- Documentation
+- Architecture
+- Benchmark
+- Pull Request
+
+避免为了翻译而降低表达准确性。
+
+---
+
+## Rationale
+
+采用统一的结构语言和灵活的内容语言，可以：
+
+- 保持网站整体一致性。
+- 提高国际可读性。
+- 保持表达自然。
+- 降低维护成本。
+
+---
+
+## Design Principle
+
+Once the website reaches a stable structure,
+future updates should focus on content rather than redesign.
+
+The website should evolve by adding Projects, Blog posts and Labs,
+instead of continuously changing its visual structure.
+翻译成人话：别老倒腾这小网站，该干嘛干嘛去
+
+---
+
+# Decision 11：质量优先（Quality Over Quantity）
+
+**Status：Accepted**
+
+## Background
+
+网站的价值不来自于内容数量，而来自于内容质量。
+
+相比于大量零散、浅层的内容，更倾向于发布数量较少但内容完整、具有参考价值的作品。
+
+---
+
+## Decision
+
+优先保证每一篇内容的完整性，而不是追求数量。
+
+无论是 Project、Blog 还是 Lab，都应尽可能回答读者真正关心的问题，而不仅仅是展示成果。
+
+---
+
+## Projects
+
+Project 应尽量完整记录一个工程。
+
+包括但不限于：
+
+- Background
+- Goal
+- Process
+- Challenges
+- Solution
+- Lessons Learned
+
+让读者能够理解整个项目，而不仅仅看到最终结果。
+
+---
+
+## Blog
+
+Blog 聚焦于值得分享的思考。
+
+允许记录解决问题后的心得、工程实践中的经验，以及学习过程中的阶段性收获。
+
+不要求篇篇都是长文，但应具有一定的信息密度。
+
+---
+
+## Labs
+
+Lab 保持轻量。
+
+重点是可体验、可交互。
+
+无需为了丰富内容而增加冗余介绍。
+
+---
+
+## Principle
+
+Don't count projects.
+Make projects count.
+
+网站的成长来自于内容质量，而不是内容数量。
+
+---
+
+## Rationale
+
+长期来看，一个内容精炼、质量稳定的网站，比大量堆积内容的网站更具有阅读价值，也更符合网站的长期定位。
+
+---
+
+# End Note
+
+规范到这里就够了。
+
+剩下的，开始做。
