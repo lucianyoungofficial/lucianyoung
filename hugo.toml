@@ -5,10 +5,10 @@ theme = "PaperMod"
 
 [params]
   profileMode.enabled = true
-  profileMode.title = "Hi, I'm Lucian"
-  profileMode.subtitle = "这里是我的个人博客"
+  profileMode.title = "Lucian Young"
+  profileMode.subtitle = "Vehicle Engineering Student\n\nA place to build, document and share."
 
-  [menu]
+[menu]
 
 [[menu.main]]
 name = "Blog"
