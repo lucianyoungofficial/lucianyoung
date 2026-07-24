@@ -1,7 +1,36 @@
-/* Improve Chinese font rendering */
+/* Typography */
 body {
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: Source Serif 4 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Serif 4", "Noto Serif SC", "STSong", "SimSun", Georgia, serif;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: "Source Serif 4", "Noto Serif SC", "STSong", Georgia, serif;
+}
+
+.site-title, .logo a, .entry-header h1, .post-title {
+  font-family: "Source Serif 4", "Noto Serif SC", "STSong", Georgia, serif;
+}
+
+/* Code: JetBrains Mono */
+code, pre, pre code, kbd, samp, .highlight code {
+  font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "SF Mono", Consolas, "Source Code Pro", monospace !important;
+}
+
+/* Terminal: JetBrains Mono */
+.terminal {
+  font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
 }
 
 /* Better blockquote style */
