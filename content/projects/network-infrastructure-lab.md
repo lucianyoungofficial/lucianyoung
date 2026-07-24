@@ -23,3 +23,9 @@ At the same time, I wanted to strengthen my networking knowledge in preparation 
 - Build a reliable, low-latency, and high-performance remote access solution.
 - Develop a deeper understanding of Linux server administration and computer networking.
 - Explore additional self-hosted services beyond remote access, such as NAS.
+
+## Current Status
+
+The node is up and running. I've achieved ultra-low latency with a minimum of **59ms** — fast enough for daily use and real-time workloads.
+
+Bandwidth still fluctuates with network conditions, sometimes high, sometimes not. It's not perfect yet, but it's mine. I'll keep tuning and gradually make full use of the server.
