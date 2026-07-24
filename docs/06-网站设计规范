@@ -1204,6 +1204,26 @@ Make projects count.
 
 ---
 
+# 字体规范（Typography）
+
+**Status：Accepted**
+
+网站统一采用以下三款字体，覆盖标题、正文与代码三大场景。
+
+## 标题：Source Serif 4
+
+Source Serif 4 是 Adobe 设计的开源衬线字体，风格正式、沉稳，适合标题，赋予页面文档感。
+
+## 正文：Geist
+
+Geist 是 Vercel 设计的现代无衬线字体，清晰、锐利，适合长时间屏幕阅读。
+
+## 代码：JetBrains Mono
+
+JetBrains Mono 是目前工程领域最受欢迎的等宽字体之一，专为代码阅读设计，字符辨识度高，支持连字（ligatures）。
+
+---
+
 # End Note
 
 规范到这里就够了。
