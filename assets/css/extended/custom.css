@@ -1,0 +1,72 @@
+/* Improve Chinese font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better blockquote style */
+.post-content blockquote {
+  border-left: 3px solid var(--primary);
+  background: var(--code-bg);
+  padding: 8px 16px;
+  margin: 16px 0;
+}
+
+/* Code block tweaks */
+.post-content pre code {
+  font-size: 0.9em;
+}
+
+/* Inline code */
+.post-content code {
+  font-size: 0.9em;
+}
+
+/* Subtle table styling */
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+.post-content th,
+.post-content td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.post-content th {
+  background: var(--code-bg);
+}
+
+/* Terminal-style elements (used in Labs) */
+.terminal {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 20px 24px;
+  font-family: "Courier New", Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #00ff88;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  min-height: 200px;
+}
+.terminal .line { white-space: pre-wrap; word-break: break-all; }
+.terminal .cursor::after { content: "█"; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.terminal .dim { color: #555; }
+.terminal .prompt { color: #00ccff; }
+.terminal .output { color: #aaa; }
+.terminal button {
+  margin-top: 16px;
+  background: #00ff88;
+  color: #1a1a2e;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+}
+.terminal button:hover { opacity: 0.85; }

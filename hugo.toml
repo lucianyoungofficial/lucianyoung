@@ -1,12 +1,35 @@
 baseURL = "https://lucianyoung.cc"
-languageCode = "zh-cn"
+locale = "zh-cn"
 title = "Lucian Young"
 theme = "PaperMod"
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
+  # Homepage profile mode
   profileMode.enabled = true
   profileMode.title = "Lucian Young"
   profileMode.subtitle = "Vehicle Engineering Student\n\nA place to build, document and share."
+
+  [[params.profileMode.buttons]]
+    name = "GitHub"
+    url = "https://github.com/lucianyoungofficial"
+
+  # Reading & navigation
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  ShowPostNavLinks = true
+
+  # Minimal — no share buttons
+  ShowShareButtons = false
+
+  # Label next to site title
+  label.text = "Lucian Young"
 
 [menu]
 
