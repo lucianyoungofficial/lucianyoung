@@ -24,6 +24,12 @@ At the same time, I wanted to strengthen my networking knowledge in preparation 
 - Develop a deeper understanding of Linux server administration and computer networking.
 - Explore additional self-hosted services beyond remote access, such as NAS.
 
+## Implementation
+
+The server is hosted on **Tencent Cloud**, using a **TCP-based proxy** to tunnel traffic. TCP delivers stable performance, typically ranging from **15 Mbps to 180 Mbps** depending on network congestion.
+
+I also experimented with UDP-based protocols — **WireGuard** and **Hysteria2**. Both consistently capped at 1–15 Mbps. UDP throttling on the network path likely caused the bottleneck, making TCP the more reliable choice for this deployment.
+
 ## Current Status
 
 The node is up and running. I've achieved ultra-low latency with a minimum of **59ms** — fast enough for daily use and real-time workloads.
