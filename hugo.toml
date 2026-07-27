@@ -18,6 +18,22 @@ ignoreLogs = ['warning-goldmark-raw-html']
     name = "GitHub"
     url = "https://github.com/lucianyoungofficial"
 
+  [[params.profileMode.buttons]]
+    name = "Blog → 个人博客"
+    url = "/blog/"
+
+  [[params.profileMode.buttons]]
+    name = "Projects → 项目"
+    url = "/projects/"
+
+  [[params.profileMode.buttons]]
+    name = "Labs → 实验性项目、游戏等"
+    url = "/labs/"
+
+  [[params.profileMode.buttons]]
+    name = "About → 关于"
+    url = "/about/"
+
   # Reading & navigation
   ShowReadingTime = true
   ShowBreadCrumbs = true
