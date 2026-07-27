@@ -99,3 +99,22 @@ code, pre, pre code, kbd, samp, .highlight code {
   font-size: 13px;
 }
 .terminal button:hover { opacity: 0.85; }
+
+/* Homepage navigation links */
+.home-nav {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.home-nav a {
+  display: block;
+  font-size: 15px;
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.home-nav a:hover {
+  color: var(--primary);
+}
