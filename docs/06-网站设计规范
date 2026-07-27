@@ -130,12 +130,17 @@ Home
 
 导航栏仅显示：
 
-| 导航名 | 中文含义 | 链接 |
-|--------|---------|------|
-| Blog | 个人博客 | [/blog/](https://lucianyoung.cc/blog/) |
-| Projects | 项目 | [/projects/](https://lucianyoung.cc/projects/) |
-| Labs | 实验性项目、游戏等 | [/labs/](https://lucianyoung.cc/labs/) |
-| About | 关于 | [/about/](https://lucianyoung.cc/about/) |
+```
+
+Blog
+
+Projects
+
+Labs
+
+About
+
+```
 
 点击网站标题返回首页。
 
