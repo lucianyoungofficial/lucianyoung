@@ -34,21 +34,21 @@ ignoreLogs = ['warning-goldmark-raw-html']
 [menu]
 
 [[menu.main]]
-name = "Blog"
+name = "Blog · 个人博客"
 url = "/blog/"
 weight = 10
 
 [[menu.main]]
-name = "Projects"
+name = "Projects · 项目"
 url = "/projects/"
 weight = 20
 
 [[menu.main]]
-name = "Labs"
+name = "Labs · 实验"
 url = "/labs/"
 weight = 30
 
 [[menu.main]]
-name = "About"
+name = "About · 关于"
 url = "/about/"
 weight = 40
