@@ -88,7 +88,7 @@
       if (!runner || !runner.tRex || !runner.playing) { requestAnimationFrame(check); return; }
       var t = runner.tRex;
 
-      if (t.status === 'RUNNING' && t.currentFrame !== lastFrame) {
+      if ((t.status === 'RUNNING' || t.status === 'DUCKING') && t.currentFrame !== lastFrame) {
         lastFrame = t.currentFrame;
         footstep();
       }
