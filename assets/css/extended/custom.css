@@ -109,7 +109,7 @@ code, pre, pre code, kbd, samp, .highlight code {
 }
 .home-nav a {
   display: block;
-  font-size: 15px;
+  font-size: 15.5px;
   color: var(--secondary);
   text-decoration: none;
   padding: 4px 0;
