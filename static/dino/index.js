@@ -1637,7 +1637,7 @@
         },
         DUCKING: {
             frames: [264, 323],
-            msPerFrame: 1000 / 8
+            msPerFrame: 1000 / 12
         }
     };
 
