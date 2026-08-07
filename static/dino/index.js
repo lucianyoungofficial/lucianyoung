@@ -931,8 +931,21 @@
     Runner.updateCanvasScaling = function (canvas, opt_width, opt_height) {
         var context = canvas.getContext('2d');
 
-        // Query the various pixel ratios
-        var devicePixelRatio = Math.floor(window.devicePixelRatio) || 1;
+        // Disable image smoothing to prevent blur when sprites are scaled
+        // (not set in upstream Chromium, but needed for crisp rendering
+        //  on fractional-DPR displays where sprite resolution > canvas DPR).
+        context.imageSmoothingEnabled = false;
+
+        // Query the various pixel ratios.
+        // Match canvas backing-store ratio to sprite resolution:
+        // on fractional-DPR displays (125%, 150%) IS_HIDPI loads 2x sprites,
+        // but Math.floor(DPR) would give 1, causing downscale blur.
+        // Force ratio >= 2 when IS_HIDPI so sprites render at native res.
+        var rawDPR = window.devicePixelRatio || 1;
+        var devicePixelRatio = Math.floor(rawDPR) || 1;
+        if (IS_HIDPI && devicePixelRatio < 2) {
+            devicePixelRatio = 2;
+        }
         var backingStoreRatio = Math.floor(context.webkitBackingStorePixelRatio) || 1;
         var ratio = devicePixelRatio / backingStoreRatio;
 

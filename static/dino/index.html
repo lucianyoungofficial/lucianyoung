@@ -30,11 +30,18 @@
         </div>
     </div>
   <script>
-  // Procedural footstep + jump sounds & AudioContext resume on user gesture
+  // Procedural audio cues based on Chromium's generated dino sound effects.
   (function() {
+    if (window.__dinoAudioCueCleanup) {
+      window.__dinoAudioCueCleanup();
+    }
+
     var audioCtx = null;
-    var lastFrame = -1;
     var wasJumping = false;
+    var footstepIntervalId = null;
+    var frameRequestId = null;
+    var wasRunning = false;
+    var patchedRunner = null;
 
     function getCtx() {
       if (!audioCtx) {
@@ -51,60 +58,189 @@
       return audioCtx;
     }
 
-    function footstep() {
+    function playNote(frequency, startTime, duration, volume, pan) {
       var ctx = getCtx();
       if (!ctx) return;
-      var t = ctx.currentTime;
-      var osc = ctx.createOscillator();
-      var g = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(240, t);
-      osc.frequency.exponentialRampToValueAtTime(80, t + 0.06);
-      g.gain.setValueAtTime(0.001, t);
-      g.gain.linearRampToValueAtTime(0.14, t + 0.003);
-      g.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
-      osc.connect(g); g.connect(ctx.destination);
-      osc.start(t); osc.stop(t + 0.06);
+      var osc1 = ctx.createOscillator();
+      var osc2 = ctx.createOscillator();
+      var gain = ctx.createGain();
+      var panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+
+      osc1.type = 'triangle';
+      osc2.type = 'triangle';
+      osc1.frequency.value = frequency + 1;
+      osc2.frequency.value = frequency - 2;
+
+      gain.gain.value = 0.1;
+      gain.gain.setValueAtTime(volume || 0.01, startTime + duration - 0.05);
+      gain.gain.linearRampToValueAtTime(0.00001, startTime + duration);
+
+      if (panner) {
+        panner.pan.value = pan || 0;
+        osc1.connect(gain).connect(panner);
+        osc2.connect(gain).connect(panner);
+        panner.connect(ctx.destination);
+      } else {
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctx.destination);
+      }
+
+      osc1.start(startTime);
+      osc2.start(startTime);
+      osc1.stop(startTime + duration);
+      osc2.stop(startTime + duration);
     }
 
-    function jumpSound() {
+    function playFootstepPair() {
       var ctx = getCtx();
       if (!ctx) return;
-      var t = ctx.currentTime;
-      var osc = ctx.createOscillator();
-      var g = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(200, t);
-      osc.frequency.exponentialRampToValueAtTime(100, t + 0.05);
-      g.gain.setValueAtTime(0.001, t);
-      g.gain.linearRampToValueAtTime(0.15, t + 0.003);
-      g.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
-      osc.connect(g); g.connect(ctx.destination);
-      osc.start(t); osc.stop(t + 0.05);
+      playNote(73.42, ctx.currentTime, 0.05, 0.13, -0.15);
+      playNote(69.30, ctx.currentTime + 0.116, 0.116, 0.13, 0.15);
+    }
+
+    function startFootsteps() {
+      if (footstepIntervalId) return;
+      playFootstepPair();
+      footstepIntervalId = setInterval(playFootstepPair, 280);
+    }
+
+    function stopFootsteps(withLanding) {
+      var ctx = getCtx();
+      if (footstepIntervalId) {
+        clearInterval(footstepIntervalId);
+        footstepIntervalId = null;
+      }
+      if (withLanding && ctx) {
+        playNote(103.83, ctx.currentTime, 0.232, 0.018, -0.1);
+        playNote(116.54, ctx.currentTime + 0.116, 0.232, 0.018, 0.1);
+      }
+    }
+
+    function playAirborneSound() {
+      var ctx = getCtx();
+      if (!ctx) return;
+
+      var duration = 0.18;
+      var sampleRate = ctx.sampleRate;
+      var buffer = ctx.createBuffer(1, sampleRate * duration, sampleRate);
+      var data = buffer.getChannelData(0);
+
+      for (var i = 0; i < data.length; i++) {
+        var progress = i / data.length;
+        var envelope = Math.sin(progress * Math.PI);
+        data[i] = (Math.random() * 2 - 1) * envelope * 0.25;
+      }
+
+      var source = ctx.createBufferSource();
+      var filter = ctx.createBiquadFilter();
+      var gain = ctx.createGain();
+
+      source.buffer = buffer;
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(720, ctx.currentTime);
+      filter.frequency.exponentialRampToValueAtTime(260, ctx.currentTime + duration);
+      filter.Q.value = 0.8;
+
+      gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.035, ctx.currentTime + 0.018);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      source.start(ctx.currentTime);
+      source.stop(ctx.currentTime + duration);
+    }
+
+    function patchRunnerSound(runner) {
+      if (!runner || patchedRunner === runner || !runner.playSound) return;
+
+      var originalPlaySound = runner.playSound.bind(runner);
+      runner.playSound = function(soundBuffer) {
+        if (soundBuffer && this.soundFx && soundBuffer === this.soundFx.BUTTON_PRESS) {
+          return;
+        }
+        return originalPlaySound(soundBuffer);
+      };
+      patchedRunner = runner;
     }
 
     function check() {
       var runner = window.Runner && window.Runner.instance_;
-      if (!runner || !runner.tRex || !runner.playing) { requestAnimationFrame(check); return; }
-      var t = runner.tRex;
+      if (!runner || !runner.tRex) {
+        frameRequestId = requestAnimationFrame(check);
+        return;
+      }
+      patchRunnerSound(runner);
 
-      if ((t.status === 'RUNNING' || t.status === 'DUCKING') && t.currentFrame !== lastFrame) {
-        lastFrame = t.currentFrame;
-        footstep();
+      if (runner.crashed || !runner.playing) {
+        stopFootsteps(false);
+        wasRunning = false;
+        wasJumping = !!runner.tRex.jumping;
+        frameRequestId = requestAnimationFrame(check);
+        return;
+      }
+
+      var t = runner.tRex;
+      var isRunning =
+        (t.status === 'RUNNING' || t.status === 'DUCKING') && !t.jumping;
+
+      if (isRunning) {
+        startFootsteps();
+      } else if (wasRunning) {
+        stopFootsteps(!runner.crashed);
       }
 
       if (t.jumping && !wasJumping) {
-        jumpSound();
+        stopFootsteps(false);
+        playAirborneSound();
       }
+      if (!t.jumping && wasJumping && !runner.crashed) {
+        startFootsteps();
+      }
+
+      wasRunning = isRunning;
       wasJumping = t.jumping;
 
-      requestAnimationFrame(check);
+      frameRequestId = requestAnimationFrame(check);
     }
 
-    document.addEventListener('keydown', function() { getCtx(); }, {once: true});
-    document.addEventListener('pointerdown', function() { getCtx(); }, {once: true});
+    function handleGesture() {
+      getCtx();
+    }
 
-    requestAnimationFrame(check);
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        stopFootsteps(false);
+      }
+    }
+
+    function handleWindowBlur() {
+      stopFootsteps(false);
+    }
+
+    window.__dinoAudioCueCleanup = function() {
+      if (footstepIntervalId) {
+        clearInterval(footstepIntervalId);
+        footstepIntervalId = null;
+      }
+      if (frameRequestId) {
+        cancelAnimationFrame(frameRequestId);
+        frameRequestId = null;
+      }
+      document.removeEventListener('keydown', handleGesture);
+      document.removeEventListener('pointerdown', handleGesture);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleWindowBlur);
+    };
+
+    document.addEventListener('keydown', handleGesture);
+    document.addEventListener('pointerdown', handleGesture);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleWindowBlur);
+
+    frameRequestId = requestAnimationFrame(check);
   })();
   </script>
 
