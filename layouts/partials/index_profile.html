@@ -1,52 +1,71 @@
-<div class="profile">
+<section class="home-hero" aria-labelledby="home-title">
     {{- with site.Params.profileMode }}
-    <div class="profile_inner">
-        {{- if .imageUrl -}}
-        {{- $img := "" }}
-        {{- if not (urls.Parse .imageUrl).IsAbs }}
-            {{- $img = resources.Get .imageUrl }}
-        {{- end }}
-        {{- if $img }}
-            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-            {{- if hugo.IsExtended -}}
-                {{- $processableFormats = $processableFormats | append "webp" -}}
-            {{- end -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-            {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
-                {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
-                {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
-                {{ else }}
-                    {{- $img = $img.Resize "150x150" }}
-                {{- end }}
-            {{- end }}
-            <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
-        {{- else }}
-        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
-        {{- end }}
-        {{- end }}
-        <h1>{{ .title | default site.Title | markdownify }}</h1>
-        <span>{{ .subtitle | markdownify }}</span>
-        {{- partial "social_icons.html" -}}
+    <div class="home-hero__content">
+        <h1 id="home-title">{{ .title | default site.Title | markdownify }}</h1>
+        <p class="home-subtitle">I build small, practical projects to understand engineering systems, infrastructure, and embedded development.</p>
 
-        {{- with .buttons }}
-        {{- $gh := index . 0 }}
-        <div class="buttons">
-            <a class="button" href="{{ trim $gh.url " " }}" rel="noopener" title="{{ $gh.name }}">
-                <span class="button-inner">{{ $gh.name }}</span>
-            </a>
+        <div class="home-actions" aria-label="Primary links">
+            <a class="home-action home-action--primary" href="/projects/">View Projects</a>
+            <a class="home-action" href="/blog/">Read Blog</a>
+            <a class="home-action" href="https://github.com/lucianyoungofficial" rel="noopener">GitHub</a>
         </div>
-        <nav class="home-nav">
-            {{- range after 1 . }}
-            <a href="{{ trim .url " " }}">{{ .name }}</a>
-            {{- end }}
-        </nav>
-        {{- end }}
     </div>
-    {{- end}}
-</div>
+
+    <div class="home-snapshot" aria-label="Current focus">
+        <span class="home-snapshot__label">Current Focus</span>
+        <ul>
+            <li>Vehicle engineering fundamentals</li>
+            <li>Linux, networking, and deployment</li>
+            <li>Embedded systems and small experiments</li>
+        </ul>
+    </div>
+    {{- end }}
+</section>
+
+<section class="home-section" aria-labelledby="home-directions">
+    <div class="home-section__header">
+        <p class="home-kicker">What This Site Is For</p>
+        <h2 id="home-directions">A public notebook for learning by building.</h2>
+    </div>
+    <div class="home-grid home-grid--three">
+        <a class="home-card" href="/projects/">
+            <span class="home-card__eyebrow">Projects</span>
+            <h3>Complete builds</h3>
+            <p>Project pages document what was built, how it works, and what broke along the way.</p>
+        </a>
+        <a class="home-card" href="/blog/">
+            <span class="home-card__eyebrow">Blog</span>
+            <h3>Thinking notes</h3>
+            <p>Short essays and technical notes about engineering, tools, and learning process.</p>
+        </a>
+        <a class="home-card" href="/labs/">
+            <span class="home-card__eyebrow">Labs</span>
+            <h3>Small experiments</h3>
+            <p>Interactive demos, lightweight tools, and ideas that are useful before they are polished.</p>
+        </a>
+    </div>
+</section>
+
+<section class="home-section" aria-labelledby="home-featured">
+    <div class="home-section__header">
+        <p class="home-kicker">Featured Work</p>
+        <h2 id="home-featured">The projects that best show the journey so far.</h2>
+    </div>
+    <div class="home-list">
+        <a class="home-project" href="/projects/network-infrastructure-lab/">
+            <span class="home-project__meta">Networking / Linux / Cloud</span>
+            <strong>Network Infrastructure Lab</strong>
+            <p>A self-hosted networking platform for secure remote access, troubleshooting, and performance testing.</p>
+        </a>
+        <a class="home-project" href="/projects/personal-website/">
+            <span class="home-project__meta">Hugo / Vercel / Cloudflare</span>
+            <strong>Personal Website</strong>
+            <p>The site itself: a static, low-maintenance engineering portfolio built around Markdown content.</p>
+        </a>
+        <a class="home-project" href="/labs/dino/">
+            <span class="home-project__meta">HTML5 / Game Demo</span>
+            <strong>Dino Runner</strong>
+            <p>A standalone version of the classic Chrome offline runner, kept in the Labs section as a playable experiment.</p>
+        </a>
+    </div>
+</section>
