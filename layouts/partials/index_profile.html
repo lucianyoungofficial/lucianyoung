@@ -14,17 +14,17 @@
 <section class="home-selected" aria-labelledby="home-featured">
     <h2 id="home-featured">Selected work</h2>
     <ul class="home-work-list">
-        <li><a class="home-work" href="{{ "projects/network-infrastructure-lab/" | relURL }}">
-            <div><h3>Network Infrastructure Lab</h3><p>A networking lab for remote access and hands-on learning.</p></div>
+        {{- range site.Params.selectedWork }}
+        {{- with site.GetPage . }}
+        {{- if not .Draft }}
+        <li><a class="home-work" href="{{ .RelPermalink }}">
+            <div><h3>{{ .Title }}</h3>{{ with .Summary }}<p>{{ . | plainify }}</p>{{ end }}</div>
             <span class="home-work__arrow" aria-hidden="true">→</span>
         </a></li>
-        <li><a class="home-work" href="{{ "projects/personal-website/" | relURL }}">
-            <div><h3>Personal Website</h3><p>A small home for projects, notes, and experiments.</p></div>
-            <span class="home-work__arrow" aria-hidden="true">→</span>
-        </a></li>
-        <li><a class="home-work" href="{{ "labs/dino/" | relURL }}">
-            <div><h3>Dino Runner</h3><p>The classic offline runner, ready to play.</p></div>
-            <span class="home-work__arrow" aria-hidden="true">→</span>
-        </a></li>
+        {{- end }}
+        {{- else }}
+        {{- errorf "Selected work page not found: %s" . }}
+        {{- end }}
+        {{- end }}
     </ul>
 </section>

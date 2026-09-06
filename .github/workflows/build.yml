@@ -1,0 +1,51 @@
+name: Hugo build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hugo-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout with theme
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install the Hugo version pinned for Vercel
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(jq -er '.build.env.HUGO_VERSION' vercel.json)
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          archive="hugo_${version}_linux-amd64.tar.gz"
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://github.com/gohugoio/hugo/releases/download/v${version}/${archive}" \
+            --output "${RUNNER_TEMP}/${archive}"
+          mkdir -p "${RUNNER_TEMP}/hugo-bin"
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}/hugo-bin" hugo
+          echo "${RUNNER_TEMP}/hugo-bin" >> "$GITHUB_PATH"
+
+      - name: Build production site
+        run: hugo --minify
+
+      - name: Check key pages were generated
+        shell: bash
+        run: |
+          set -euo pipefail
+          for page in index.html blog/index.html projects/index.html labs/index.html about/index.html dino/index.html; do
+            test -s "public/$page"
+          done
