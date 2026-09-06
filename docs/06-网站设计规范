@@ -27,9 +27,8 @@
 
 核心理念：
 
-> **Building software, exploring systems, documenting the process.**
-好装。作废。
-A place to build, document and share.
+> **A place to build, document and share.**
+
 ---
 
 # 设计原则（Design Principles）
@@ -150,55 +149,25 @@ About
 
 # 首页（Homepage）
 
-首页保持极简。
+首页帮助访问者了解作者的实践方向，并进入具体内容。
 
-展示：
+当前实现位于 `layouts/partials/index_profile.html`，采用以下结构：
 
-```
+1. 作者名称与简短介绍。
+2. View Projects / Read Blog / GitHub 快速入口。
+3. Current Focus：当前关注方向。
+4. What This Site Is For：Projects / Blog / Labs 的职责。
+5. Featured Work：精选项目与互动作品入口。
 
-Lucian Young
+> **改进批注（2026-09-06）**：根据现有模板与 v1.0.2 变更记录更新。旧版“固定第二行身份 + 纵向导航”的布局已被替换；本次记录现状，不据旧规范回退页面。
 
-Vehicle Engineering Student
+保持介绍简短，精选内容直接链接到对应页面。未来更新优先替换内容，不为增加内容反复重做首页结构。
 
-A place to build, document and share.
+作者身份与 Current Focus 可随学习阶段更新。GitHub 属于作者身份入口，保持简洁；全站主导航仍只包含 Blog / Projects / Labs / About。
 
-Blog → 个人博客    (/blog/)
-Projects → 项目    (/projects/)
-Labs → 实验性项目、游戏等    (/labs/)
-About → 关于    (/about/)
-```
+`hugo.toml` 中的 `profileMode.subtitle` 与 `profileMode.buttons` 是旧版配置；当前自定义模板未读取这两项。修改它们不会改变当前首页介绍或按钮。
 
----
-
-## Current Stage
-
-首页第二行用于展示当前阶段（Current Stage）。
-
-例如：
-
-```
-
-Vehicle Engineering Student
-
-```
-
-未来可随着职业发展自然更新：
-
-```
-
-Software Engineer
-
-Embedded Software Engineer
-
-```
-
-这一行不是个人简介。
-
-它用于告诉访问者：
-
-> 我目前正处于哪个工程阶段。
-
-网站整体设计无需因此调整。
+> **改进批注（2026-09-06）**：标明配置与模板的实际关系，避免后续修改无效。旧配置暂保留，是否统一由后续独立改动处理。
 
 ---
 
@@ -270,13 +239,11 @@ Blog 用于记录学习与思考。
 
 # Labs
 
-Labs 用于记录实验、小项目与探索性内容。
+Labs 展示轻量、可独立体验的小工具、小游戏、可视化与 Demo。
 
-特点：
+不承担开发过程或工程文档记录，具体边界见 Decision 07。
 
-- 快速发布
-- 不要求完整
-- 保留实验过程
+> **改进批注（2026-09-06）**：以已接受的 Decision 07 为准，修正早期“保留实验过程”的冲突描述。
 
 ---
 
@@ -370,110 +337,6 @@ Git Commit：
 随着网站的发展，可持续补充新的设计原则。
 
 新增原则应优先更新本文档，再落实到具体页面。
----
-
-# 首页设计（Homepage Design）
-
-首页遵循极简设计，仅承担网站入口的职责。
-
-展示顺序固定如下：
-
-```text
-Lucian Young    [GitHub]
-
-Vehicle Engineering Student
-
-Building software, exploring systems, documenting the process.
-
-↓
-
-Blog
-
-Projects
-
-Labs
-
-About
-```
-
-首页不承担内容展示功能，而是帮助访问者快速了解网站定位并进入对应页面。
-
----
-
-## Current Stage
-
-首页第二行用于展示当前阶段（Current Stage）。
-
-例如：
-
-```text
-Vehicle Engineering Student
-```
-
-未来可根据职业发展更新为：
-
-```text
-Software Engineer
-
-Embedded Software Engineer
-```
-
-### 设计原则
-
-- Current Stage 用于说明当前所处阶段，而非个人简介。
-- 随着职业发展可自然更新。
-- 网站整体布局无需因此调整。
-- 保持网站具有长期成长性。
-
----
-
-## Homepage Navigation
-
-首页导航采用纵向布局。
-
-```text
-Blog
-
-Projects
-
-Labs
-
-About
-```
-
-### 设计原则
-
-访问者阅读顺序保持一致：
-
-1. 网站身份（Identity）
-2. 当前阶段（Current Stage）
-3. 网站理念（Slogan）
-4. 网站导航（Navigation）
-
-首页避免复杂布局，使用户快速进入内容。
-
----
-
-## Identity Links
-
-GitHub 属于身份入口（Identity Link），而不是网站导航。
-
-放置于网站名称右侧。
-
-例如：
-
-```text
-Lucian Young    [GitHub]
-```
-
-### 设计原则
-
-- GitHub 属于作者身份的一部分。
-- 不放入 Blog、Projects 等导航中。
-- 保持导航仅包含站内页面。
-- 后续若增加 Email、LinkedIn 等身份入口，也应保持相同位置与样式。
-- 身份入口保持简洁，不喧宾夺主。
-
 ---
 
 # Decision 05：Projects 与 Blog 的职责划分
@@ -625,8 +488,6 @@ Who Am I
 
 Current Focus
 
-Principles
-
 Contact
 ```
 
@@ -669,23 +530,7 @@ Current Focus 可以随着学习方向变化而更新。
 
 ---
 
-## Principles
-
-展示长期坚持的工程理念。
-
-例如：
-
-- Documentation First
-- Engineering Thinking
-- Continuous Learning
-- Build Before Polish
-- Low Maintenance
-
-Principles 应保持长期稳定。
-
-未来如有新的设计理念，可逐步补充。
-
----
+> **改进批注（2026-09-06）**：About 以当前 `content/about/_index.md` 为准，只保留 Who Am I / Current Focus / Contact。工程原则集中在本规范中维护，避免两处重复。
 
 ## Contact
 
@@ -710,7 +555,6 @@ About 页面的目标不是介绍全部经历。
 
 - 我是谁
 - 我目前关注什么
-- 我坚持什么
 - 如何联系我
 
 页面保持简洁、稳定、易维护。
@@ -875,7 +719,6 @@ Lab 页面应以体验内容为主，而非文字介绍。
 
 - Who Am I
 - Current Focus
-- Principles
 - Contact
 
 ---
