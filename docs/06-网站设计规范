@@ -61,7 +61,7 @@
 - 导航、URL 和技术术语用英文；正文使用最自然的语言，Project 名称优先英文。
 - 新增内容与资源名称使用小写英文 kebab-case，例如 `network-infrastructure-lab.md`。
 - 已有中文工程文档名和 Hugo 的 `_index.md` 等约定文件名保留。
-- 标题字体 Source Serif 4；正文 Geist；代码 JetBrains Mono。
+- 站点名称、标题与正文使用 IBM Plex Sans，中文回退到系统黑体（苹方、微软雅黑等）；代码使用 JetBrains Mono。标题以 600 字重为主，正文常规字重。
 - 字体配置在 `layouts/partials/extend_head.html`，样式在 `assets/css/extended/custom.css`。
 
 ## 5. 维护边界

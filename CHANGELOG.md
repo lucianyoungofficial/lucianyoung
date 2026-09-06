@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### 字体调整（2026-09-06）
+
+- 站点名称、标题和正文统一使用 IBM Plex Sans，中文使用系统无衬线回退字体，代码保留 JetBrains Mono。
+- 移除 Source Serif 4 和 Geist 的字体加载与样式，标题以 600 字重为主，减少报刊式视觉感受。
+
 ### 维护与文档精简（2026-09-06）
 
 - 添加 GitHub Actions 构建与关键页面检查，从 `vercel.json` 读取 Hugo 版本；部署仍由 Vercel 执行。
