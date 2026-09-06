@@ -153,21 +153,19 @@ About
 
 当前实现位于 `layouts/partials/index_profile.html`，采用以下结构：
 
-1. 作者名称与简短介绍。
-2. View Projects / Read Blog / GitHub 快速入口。
-3. Current Focus：当前关注方向。
-4. What This Site Is For：Projects / Blog / Labs 的职责。
-5. Featured Work：精选项目与互动作品入口。
+1. 作者名称、学生身份与核心 slogan。
+2. GitHub 身份链接。
+3. Selected work：精选内容列表，每项保留标题、一句描述与链接。
 
-> **改进批注（2026-09-06）**：根据现有模板与 v1.0.2 变更记录更新。旧版“固定第二行身份 + 纵向导航”的布局已被替换；本次记录现状，不据旧规范回退页面。
+> **改进批注（2026-09-06）**：经本地预览确认，删除与导航重复的按钮和栏目说明，将 Current Focus 留在 About；缩短首屏高度，精选内容改为简洁列表。
 
 保持介绍简短，精选内容直接链接到对应页面。未来更新优先替换内容，不为增加内容反复重做首页结构。
 
 作者身份与 Current Focus 可随学习阶段更新。GitHub 属于作者身份入口，保持简洁；全站主导航仍只包含 Blog / Projects / Labs / About。
 
-`hugo.toml` 中的 `profileMode.subtitle` 与 `profileMode.buttons` 是旧版配置；当前自定义模板未读取这两项。修改它们不会改变当前首页介绍或按钮。
+首页读取 `hugo.toml` 中的 `profileMode.title` 与 `profileMode.subtitle`。`subtitle` 以空行分隔身份和 slogan；`profileMode.buttons` 仅读取名称为 GitHub 的条目。全站导航由 `menu.main` 管理。
 
-> **改进批注（2026-09-06）**：标明配置与模板的实际关系，避免后续修改无效。旧配置暂保留，是否统一由后续独立改动处理。
+> **改进批注（2026-09-06）**：恢复从配置读取介绍与 GitHub 链接。其余旧 `profileMode.buttons` 条目目前不显示，后续可单独清理。
 
 ---
 

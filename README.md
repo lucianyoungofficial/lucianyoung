@@ -37,7 +37,7 @@
 - [x] 自定义域名
 - [x] HTTPS
 - [x] Hugo 版本问题修复
-- [x] 首页重构：入口、Current Focus、内容方向与 Featured Work
+- [x] 首页精简：身份介绍、GitHub 与 Selected work；Current Focus 保留在 About
 - [x] Blog：Hello World 首篇文章
 - [x] Projects：Network Infrastructure Lab、Personal Website
 - [x] Labs：Dino Runner
