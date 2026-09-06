@@ -22,16 +22,20 @@ At the same time, I wanted to strengthen my networking knowledge in preparation 
 
 - Build a reliable, low-latency, and high-performance remote access solution.
 - Develop a deeper understanding of Linux server administration and computer networking.
-- Explore additional self-hosted services beyond remote access, such as NAS.
 
 ## Implementation
 
-The server is hosted on **Tencent Cloud**, using a **TCP-based proxy** to tunnel traffic. TCP delivers stable performance, typically ranging from **15 Mbps to 180 Mbps** depending on network congestion.
+The server is hosted on **Tencent Cloud**, using a **TCP-based proxy** to tunnel traffic. In my recorded tests, TCP throughput ranged from **15 Mbps to 180 Mbps**.
 
-I also experimented with UDP-based protocols — **WireGuard** and **Hysteria2**. Both consistently capped at 1–15 Mbps. UDP throttling on the network path likely caused the bottleneck, making TCP the more reliable choice for this deployment.
+I also experimented with UDP-based protocols — **WireGuard** and **Hysteria2** — and observed **1–15 Mbps**. UDP throttling on the network path is one possible explanation, but the cause has not been isolated. These results led me to use TCP for this deployment.
 
 ## Current Status
 
-The node is up and running. I've achieved ultra-low latency with a minimum of **59ms** — fast enough for daily use and real-time workloads.
+At the time of writing, the node was running, with a lowest recorded latency of **59 ms**. The test endpoints, tools, sample sizes, and network conditions were not documented here, so these figures are observations rather than a reproducible benchmark.
 
 Bandwidth still fluctuates with network conditions, sometimes high, sometimes not. It's not perfect yet, but it's mine. I'll keep tuning and gradually make full use of the server.
+
+## Next Steps
+
+- Record test conditions and repeated measurements before drawing stronger performance conclusions.
+- Explore additional self-hosted services, such as NAS, as future work.
