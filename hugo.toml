@@ -9,7 +9,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   unsafe = true
 
 [params]
-  selectedWork = ["/projects/network-infrastructure-lab", "/projects/personal-website", "/labs/dino"]
+  selectedWork = ["/projects/personal-website", "/labs/dino"]
   # Homepage profile mode
   profileMode.enabled = true
   profileMode.title = "Lucian Young"

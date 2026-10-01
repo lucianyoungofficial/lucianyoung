@@ -3,7 +3,7 @@ title: "Network Infrastructure Lab"
 date: 2026-07-20
 weight: 1
 summary: "A self-hosted networking platform focused on Linux, networking, deployment and troubleshooting."
-draft: false
+draft: true
 ---
 
 ## Overview
