@@ -5,13 +5,13 @@ summary: "Who I am, what I focus on, and how to reach me."
 
 ## Who Am I
 
-Vehicle Engineering student interested in embedded systems, networking, and AI.
+Vehicle Engineering student interested in embedded systems and networking.
 
 ## Current Focus
 
 - Vehicle Engineering
 - Embedded Systems
-- Networking & Linux
+- Networking
 - Building things that work
 
 ## Contact
