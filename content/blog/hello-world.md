@@ -5,12 +5,10 @@ summary: "小站搭好了，就把它当作我的作品集吧。"
 draft: false
 ---
 
-```text
----------------------------------------
-🎊 ＼＼ Hello World! 小站开张！ ／／ 🎊
-             ヽ(✿ﾟ▽ﾟ)ノ 🎉
----------------------------------------
-```
+<div class="hello-celebration">
+  <div class="hello-celebration__title"><span>🎊 ＼＼</span> <span>Hello World!</span> <span>小站开张！</span> <span>／／ 🎊</span></div>
+  <div class="hello-celebration__face">ヽ(✿ﾟ▽ﾟ)ノ 🎉</div>
+</div>
 
 也是成功用 Agent 搭上了！
 
@@ -20,5 +18,3 @@ draft: false
 
 就把它当作我的作品集吧，
 要是还做出来了啥就放上来，展示！٩(ˊᗜˋ*)و
-
----------------------------------------
